@@ -10,5 +10,4 @@ rsync --archive --links --hard-links --times --verbose --delete --recursive --ex
 rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ mirrors.ustc.edu.cn::pypi/ /data/mirror/pypi >> /var/log/rsync/pypi.log-$(date "+%Y-%m-%d")
 
 rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ rsync://rsync.releases.ubuntu.com/releases/ /data/mirror/ubuntu-releases >> /var/log/rsync/ubuntu-release.log-$(date "+%Y-%m-%d")
-
 #rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ rsync://archive.ubuntu.com/ubuntu /data/mirror/ubuntu >> /var/log/rsync/ubuntu.log-$(date "+%Y-%m-%d")
