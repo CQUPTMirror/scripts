@@ -1,1 +1,2 @@
-# mirror-scripts
+# scripts
+这里存放了mirror服务器上正在使用或者曾经使用过的scripts
