@@ -1,1 +1,1 @@
-rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ rsync://rsync.releases.ubuntu.com/releases/ /data/mirror/ubuntu-releases >> /var/log/rsync/ubuntu-releases.log-$(date "+%Y-%m-%d")
+rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ --delete-excluded rsync://rsync.releases.ubuntu.com/releases/ /data/mirror/ubuntu-releases >> /var/log/rsync/ubuntu-releases.log-$(date "+%Y-%m-%d")
