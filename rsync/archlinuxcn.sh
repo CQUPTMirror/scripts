@@ -1,1 +1,1 @@
-rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ mirrors.ustc.edu.cn::archlinuxcn/ /data/mirror/archlinuxcn >> /var/log/rsync/archlinuxcn.log-$(date "+%Y-%m-%d")
+rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ --delete-excluded mirrors.ustc.edu.cn::archlinuxcn/ /data/mirror/archlinuxcn >> /var/log/rsync/archlinuxcn.log-$(date "+%Y-%m-%d")
