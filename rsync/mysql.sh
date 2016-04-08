@@ -1,0 +1,1 @@
+rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ --delete-excluded rsync://ftp5.gwdg.de/pub/linux/mysql/ /tmp/mirror/mysql >> /var/log/rsync/mysql.log-$(date "+%Y-%m-%d")
