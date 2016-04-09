@@ -1,1 +1,1 @@
-rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ --delete-excluded rsync://dl.fedoraproject.org/fedora-epel/ /data/mirror/epel  >> /var/log/rsync/epel.log-$(date "+%Y-%m-%d")
+rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ --delete-excluded rsync://mirror.nl.leaseweb.net/epel/ /data/mirror/epel  >> /var/log/rsync/epel.log-$(date "+%Y-%m-%d")
