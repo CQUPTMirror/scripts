@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 detect-target() {
     local TARGET_NAME="$1";
     local LOCAL_PATH="/data/mirror/$TARGET_NAME";

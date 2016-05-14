@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # TODO: this file is based on ubuntu offical wiki. 
 # TODO: shellcheck is not applied to this file.
 # Reference: https://wiki.ubuntu.com/Mirrors/Scripts 

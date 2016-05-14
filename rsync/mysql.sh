@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # FIXME: This file remains unverificated.
 
 . "$(dirname "$0")/functions.sh";
