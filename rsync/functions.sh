@@ -1,5 +1,5 @@
 #!/bin/sh
- detect-target() {
+detect-target() {
     local TARGET_NAME="$1";
     local LOCAL_PATH="/data/mirror/$TARGET_NAME";
 
@@ -9,7 +9,7 @@
     fi
 }
 
- mirror-fetch() {
+mirror-fetch() {
     local TARGET_NAME="$1";
     local TARGET_URL="$2";
     local LOCAL_DATE;
@@ -34,7 +34,7 @@
         >> "$LOCAL_RSYNC_LOGGER"; 
 }
 
- set-permission() {
+set-permission() {
     local TARGET_NAME="$1";
     local LOCAL_PATH="/data/mirror/$TARGET_NAME";
     local LOCAL_DATE;
