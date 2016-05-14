@@ -1,1 +1,9 @@
-rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ --delete-excluded rsync://mirror.nl.leaseweb.net/epel/ /data/mirror/epel  >> /var/log/rsync/epel.log-$(date "+%Y-%m-%d")
+#!/bin/sh
+. "$(dirname "$0")/functions.sh";
+
+TARGET_NAME='epel';
+TARGET_URL="rsync://mirrors.ustc.edu.cn/$TARGET_NAME/";
+
+detect-target "$TARGET_NAME";
+mirror-fetch "$TARGET_NAME" "$TARGET_URL";
+set-permission "$TARGET_NAME";

@@ -1,6 +1,16 @@
-#Ubuntu two stage sync
+#!/bin/sh
+# TODO: this file is based on ubuntu offical wiki. 
+# TODO: shellcheck is not applied to this file.
+# Reference: https://wiki.ubuntu.com/Mirrors/Scripts 
+# Ubuntu two stage sync
 RSYNCSOURCE=rsync://archive.ubuntu.com/ubuntu
 BASEDIR=/data/mirror/ubuntu/
+
+if [ ! -d ${BASEDIR} ]; then
+  warn "${BASEDIR} does not exist yet, trying to create it..."
+  mkdir -p ${BASEDIR} || fatal "Creation of ${BASEDIR} failed."
+fi
+
 rsync --recursive --verbose --times --links --hard-links \
       --stats \
       --exclude "Packages*" --exclude "Sources*" \

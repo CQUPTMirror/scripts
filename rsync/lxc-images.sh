@@ -1,8 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/functions.sh";
 
-TARGET_NAME='ubuntu-releases';
-TARGET_URL="rsync://mirrors.ustc.edu.cn/$TARGET_NAME/";
+TARGET_NAME='lxc-images';
+TARGET_URL="rsync://mirror.tuna.tsinghua.edu.cn/$TARGET_NAME/";
 
 detect-target "$TARGET_NAME";
 mirror-fetch "$TARGET_NAME" "$TARGET_URL";

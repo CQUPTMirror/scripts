@@ -1,1 +1,11 @@
-rsync --archive --links --hard-links --times --verbose --delete --recursive --exclude .~tmp~/ --delete-excluded rsync://ftp5.gwdg.de/pub/linux/mysql/ /tmp/mirror/mysql >> /var/log/rsync/mysql.log-$(date "+%Y-%m-%d")
+#!/bin/sh
+# FIXME: This file remains unverificated.
+
+. "$(dirname "$0")/functions.sh";
+
+TARGET_NAME='mysql';
+TARGET_URL="rsync://ftp5.gwdg.de/pub/linux/$TARGET_NAME/";
+
+detect-target "$TARGET_NAME";
+mirror-fetch "$TARGET_NAME" "$TARGET_URL";
+set-permission "$TARGET_NAME";
