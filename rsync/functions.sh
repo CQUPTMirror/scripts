@@ -42,8 +42,8 @@ set-permission() {
     local LOCAL_CHMOD_LOGGER="/var/log/rsync/$TARGET_NAME-chmod-$LOCAL_DATE.log";
 
     chown -R www-data:www-data "$LOCAL_PATH";
-    find "$LOCAL_PATH" -type d -print0 | xargs --null chmod -v 755 >> "$LOCAL_CHMOD_LOGGER";
-    find "$LOCAL_PATH" -type f -print0 | xargs --null chmod -v 644 >> "$LOCAL_CHMOD_LOGGER";
+    find "$LOCAL_PATH" -type d -print0 | xargs --null chmod -v 755 | grep -v "changed from 0775 (rwxrwxr-x) to 0755 (rwxr-xr-x)" >> "$LOCAL_CHMOD_LOGGER";
+    find "$LOCAL_PATH" -type f -print0 | xargs --null chmod -v 644 | grep -v "changed from 0664 (rw-rw-r--) to 0644 (rw-r--r--)" >> "$LOCAL_CHMOD_LOGGER";
 }
 
 fetch() {
