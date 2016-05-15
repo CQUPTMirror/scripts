@@ -4,6 +4,4 @@
 TARGET_NAME='ubuntu-releases';
 TARGET_URL="rsync://mirrors.ustc.edu.cn/$TARGET_NAME/";
 
-detect-target "$TARGET_NAME";
-mirror-fetch "$TARGET_NAME" "$TARGET_URL";
-set-permission "$TARGET_NAME";
+fetch 'rsync' "$TARGET_NAME" "$TARGET_URL";

@@ -9,7 +9,7 @@ detect-target() {
     fi
 }
 
-mirror-fetch() {
+mirror-fetch-with-rsync() {
     local TARGET_NAME="$1";
     local TARGET_URL="$2";
     local LOCAL_DATE;
@@ -44,4 +44,18 @@ set-permission() {
     chown -R www-data:www-data "$LOCAL_PATH";
     find "$LOCAL_PATH" -type d -print0 | xargs --null chmod -v 755 >> "$LOCAL_CHMOD_LOGGER";
     find "$LOCAL_PATH" -type f -print0 | xargs --null chmod -v 644 >> "$LOCAL_CHMOD_LOGGER";
+}
+
+fetch() {
+    local TYPE="$1";
+    local TARGET_NAME="$2";
+    local TARGET_URL="$3";
+
+    detect-target "$TARGET_NAME";
+    case "$TYPE" in
+        rsync)
+            mirror-fetch-with-rsync "$TARGET_NAME" "$TARGET_URL";
+            ;;
+    esac
+    set-permission "$TARGET_NAME";
 }
