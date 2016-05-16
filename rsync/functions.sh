@@ -56,7 +56,7 @@ set-permission() {
 }
 
 ## This function does a full process of sync. 
-## Usage: fetch $PROTOCOL $TARGET_NAME $TARGET_URL
+## Usage: fetch $METHOD $TARGET_NAME $TARGET_URL
 fetch() {
     local TYPE="$1";
     local TARGET_NAME="$2";
