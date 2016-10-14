@@ -3,7 +3,7 @@
 # TODO: shellcheck is not applied to this file.
 # Reference: https://wiki.ubuntu.com/Mirrors/Scripts 
 # Ubuntu two stage sync
-RSYNCSOURCE=rsync://archive.ubuntu.com/ubuntu
+RSYNCSOURCE=rsync://cn.archive.ubuntu.com/ubuntu
 BASEDIR=/data/mirror/ubuntu/
 SYNC_DATE=$(date "+%Y-%m-%d")
 
