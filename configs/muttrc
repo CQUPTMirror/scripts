@@ -1,0 +1,9 @@
+set sendmail="/usr/lib/sendmail"
+set use_from=yes
+set realname="CQUPT mirror"
+set from="CQUPT mirror <cqupt.mirror@hotmail.com>"
+set rfc2047_parameters=yes
+set charset="utf-8"
+set send_charset="gb2312"
+set send_charset="utf-8"
+set send_charset="us-ascii:gbk:utf-8"
