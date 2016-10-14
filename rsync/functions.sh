@@ -44,7 +44,7 @@ mirror-fetch-with-rsync() {
 ## Usage: set-permission $TARGET_NAME 
 set-permission() {
     local TARGET_NAME="$1";
-    local LOCAL_PATH="/data/mirror/$TARGET_NAME";
+    local LOCAL_PATH="/data/mirror/$TARGET_NAME/";
     local LOCAL_DATE;
     LOCAL_DATE=$(date '+%Y-%m-%d');
     # chperm is short for change permission.
