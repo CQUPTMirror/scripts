@@ -5,3 +5,5 @@ TARGET_NAME='lxc-images';
 TARGET_URL="rsync://mirror.tuna.tsinghua.edu.cn/$TARGET_NAME/";
 
 fetch 'rsync' "$TARGET_NAME" "$TARGET_URL";
+
+push-notification "$TARGET_NAME";

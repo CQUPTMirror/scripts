@@ -5,3 +5,5 @@ TARGET_NAME='pypi';
 TARGET_URL="rsync://mirrors.ustc.edu.cn/$TARGET_NAME/";
 
 fetch 'rsync' "$TARGET_NAME" "$TARGET_URL";
+
+push-notification "$TARGET_NAME";

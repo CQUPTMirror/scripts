@@ -5,3 +5,5 @@ TARGET_NAME='mysql';
 TARGET_URL="rsync://ftp5.gwdg.de/pub/linux/$TARGET_NAME/";
 
 fetch 'rsync' "$TARGET_NAME" "$TARGET_URL";
+
+push-notification "$TARGET_NAME";
