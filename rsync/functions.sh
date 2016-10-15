@@ -77,5 +77,5 @@ push-notification() {
     local TARGET_NAME="$1"
     local LOCAL_DATE;
     LOCAL_DATE=$(date '+%Y-%m-%d');
-    mutt -F ../configs/muttrc -s "Rsync log for $TARGET_NAME on $LOCAL_DATE" cqupt-mirror@googlegroups.com < /var/log/rsync/$TARGET_NAME-rsync-$LOCAL_DATE.log
+    mutt -F $(dirname $0)/../configs/muttrc -s "Rsync log for $TARGET_NAME on $LOCAL_DATE" cqupt-mirror@googlegroups.com < /var/log/rsync/$TARGET_NAME-rsync-$LOCAL_DATE.log
 }
