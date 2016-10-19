@@ -44,7 +44,7 @@ mirror-fetch-with-rsync() {
 ## Usage: set-permission $TARGET_NAME 
 set-permission() {
     local TARGET_NAME="$1";
-    local LOCAL_PATH="/data/mirror/$TARGET_NAME";
+    local LOCAL_PATH="/data/mirror/$TARGET_NAME/";
     local LOCAL_DATE;
     LOCAL_DATE=$(date '+%Y-%m-%d');
     # chperm is short for change permission.
@@ -69,4 +69,13 @@ fetch() {
             ;;
     esac
     set-permission "$TARGET_NAME";
+}
+
+## This function sends an email to the mail-list cqupt-mirror@googlegroups.com
+## Usage: push-notification $TARGET_NAME
+push-notification() {
+    local TARGET_NAME="$1"
+    local LOCAL_DATE;
+    LOCAL_DATE=$(date '+%Y-%m-%d');
+    mutt -F $(dirname $0)/../configs/muttrc -s "Rsync log for $TARGET_NAME on $LOCAL_DATE" cqupt-mirror@googlegroups.com < /var/log/rsync/$TARGET_NAME-rsync-$LOCAL_DATE.log
 }
