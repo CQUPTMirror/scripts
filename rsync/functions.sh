@@ -5,7 +5,7 @@
 ## Usage: detect-target $TARGET_NAME;
 detect-target() {
     local TARGET_NAME="$1";
-    local LOCAL_PATH="/data/mirror/$TARGET_NAME";
+    local LOCAL_PATH="/data/mirror/$TARGET_NAME/";
 
     if [ ! -d "${LOCAL_PATH}" ]; then
         fatal "${LOCAL_PATH} does not exist!";
@@ -14,13 +14,14 @@ detect-target() {
 }
 
 ## This function do the actual process with rsync protocol.
-## Usage: mirror-fetch-with-rsync $TARGET_NAME $TARGET_URL
+## Usage: mirror-fetch-with-rsync $TARGET_NAME $TARGET_URL $TARGET_EXC
 mirror-fetch-with-rsync() {
     local TARGET_NAME="$1";
     local TARGET_URL="$2";
+    local TARGET_EXC="$3";
     local LOCAL_DATE;
     LOCAL_DATE=$(date '+%Y-%m-%d');
-    local LOCAL_PATH="/data/mirror/$TARGET_NAME";
+    local LOCAL_PATH="/data/mirror/$TARGET_NAME/";
     local LOCAL_RSYNC_LOGGER="/var/log/rsync/$TARGET_NAME-rsync-$LOCAL_DATE.log";
 
     rsync \
@@ -35,13 +36,14 @@ mirror-fetch-with-rsync() {
         --exclude \
         .~tmp~/ \
         --delete-excluded \
+        --exclude-from="$TARGET_EXC" \
         "$TARGET_URL" \
         "$LOCAL_PATH" \
-        >> "$LOCAL_RSYNC_LOGGER"; 
+        >> "$LOCAL_RSYNC_LOGGER";
 }
 
 ## This function sets permission of all files and directories in the certain path with 755 for directories and 644 for files.
-## Usage: set-permission $TARGET_NAME 
+## Usage: set-permission $TARGET_NAME
 set-permission() {
     local TARGET_NAME="$1";
     local LOCAL_PATH="/data/mirror/$TARGET_NAME/";
@@ -55,17 +57,18 @@ set-permission() {
     find "$LOCAL_PATH" -type f -print0 | xargs --null chmod -c 644 >> "$LOCAL_CHMOD_LOGGER";
 }
 
-## This function does a full process of sync. 
-## Usage: fetch $METHOD $TARGET_NAME $TARGET_URL
+## This function does a full process of sync.
+## Usage: fetch $METHOD $TARGET_NAME $TARGET_URL $TARGET_EXC
 fetch() {
     local TYPE="$1";
     local TARGET_NAME="$2";
     local TARGET_URL="$3";
+    local TARGET_EXC="$4";
 
     detect-target "$TARGET_NAME";
     case "$TYPE" in
         rsync)
-            mirror-fetch-with-rsync "$TARGET_NAME" "$TARGET_URL";
+            mirror-fetch-with-rsync "$TARGET_NAME" "$TARGET_URL" "$TARGET_EXC";
             ;;
     esac
     set-permission "$TARGET_NAME";
