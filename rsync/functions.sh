@@ -20,7 +20,7 @@ mirror-fetch-with-rsync() {
     local TARGET_URL="$2";
     local LOCAL_DATE;
     LOCAL_DATE=$(date '+%Y-%m-%d');
-    local LOCAL_PATH="/data/mirror/$TARGET_NAME";
+    local LOCAL_PATH="/data/mirror/$TARGET_NAME/";
     local LOCAL_RSYNC_LOGGER="/var/log/rsync/$TARGET_NAME-rsync-$LOCAL_DATE.log";
 
     rsync \
